@@ -2,4 +2,4 @@ temp/
 .swp
 .pyc
 __pycache__/
-.idae/
+.idea/
