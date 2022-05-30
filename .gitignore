@@ -3,3 +3,7 @@ temp/
 .pyc
 __pycache__/
 .idea/
+*.wav
+build/
+dist/
+*.spec
