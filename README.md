@@ -24,3 +24,4 @@ pyinstaller -F -n voice_record.exe main.py --noconsole --icon eyenix.ico --add-d
 
 ## DEMO
 - Just run voice_record.exe
+![demo](https://user-images.githubusercontent.com/66294848/171068617-0257a61e-34ba-408e-8671-e559954ab24f.gif)
