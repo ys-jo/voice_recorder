@@ -29,6 +29,7 @@ class program_exe(QMainWindow):
         self.btn_record = QPushButton('Record', self)
         self.btn_listen = QPushButton('Listen', self)
         self.btn_save = QPushButton('Save', self)
+        self.dir = "./"
 
         # Init UI
         self.initUI()
@@ -123,7 +124,8 @@ class program_exe(QMainWindow):
         self.record_process.listen()
 
     def save(self):
-        filename = QFileDialog.getSaveFileName(self, 'Save file', './', 'wav File(*.wav)')
+        filename = QFileDialog.getSaveFileName(self, 'Save file', self.dir, 'wav File(*.wav)')
+        self.dir = '/'.join(filename[0].split('/')[:-1])
         self.record_process.save(filename)
 
     def button_disable(self):
