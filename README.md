@@ -23,7 +23,9 @@ pyinstaller -F -n voice_record.exe main.py --noconsole --icon eyenix.ico --add-d
 ```
 
 ## DEMO
-- Just run voice_record.exe  
+- Just run voice_record.exe (ver1.0.0)
 
-- GIF
 ![demo](https://user-images.githubusercontent.com/66294848/171068617-0257a61e-34ba-408e-8671-e559954ab24f.gif)
+- Just run voice_record.exe (ver1.0.1)
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/66294848/185864145-59d41d4c-8649-4661-94cb-1b4b1317c04a.gif)
