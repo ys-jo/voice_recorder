@@ -12,21 +12,20 @@ MSI main board mic driver has problem.
 Found a phenomenon in which recording was not possible for about 0.3 to 0.5 seconds in thr front part
 """
 class record_process():
-    def __init__(self, arg, time):
+    def __init__(self, arg):
         # record param
         self.CHUNK = 1024
         self.FORMAT = pyaudio.paInt16
         self.CHANNELS = 1
         self.RATE = 16000  # 44100
-        self.RECORD_SECONDS = int(time)
+        self.RECORD_SECONDS = 2
         self.arg = arg
         self.fd, self.WAVE_OUTPUT_FILENAME = mkstemp(suffix='.wav')
 
-    def record(self, time):
-        self.RECORD_SECONDS = time
-        self.arg.Timer_thread.get_arg(self.RECORD_SECONDS)
+    def record(self):
 
         p = pyaudio.PyAudio()
+
         try:
             stream = p.open(format=self.FORMAT,
                             channels=self.CHANNELS,
@@ -76,9 +75,8 @@ class record_process():
                 f.write(frames[i])
                 f.close()
             """
-        except Exception as e:
+        except Exception:
             self.update_label_txt("There are no recordable devices.")
-            # print('잘못된 인덱스입니다.', e)
             p.terminate()
 
     def listen(self):
@@ -120,13 +118,12 @@ class record_process():
 
     def save(self, filename):
         if os.path.isfile(self.WAVE_OUTPUT_FILENAME):
-            if filename:
-                if os.path.isfile(filename):
-                    os.remove(filename)
-                shutil.copy(self.WAVE_OUTPUT_FILENAME, filename)
-                self.arg.label_inform.setText("Save "+filename.split('/')[-1])
+            if filename[0]:
+                if os.path.isfile(filename[0]):
+                    os.remove(filename[0])
+                shutil.copy(self.WAVE_OUTPUT_FILENAME, filename[0])
+                self.arg.label_inform.setText("Save wav file!")
                 self.arg.label_inform.repaint()
-                self.arg.button_disable_2()
         else:
             self.update_label_txt("There is no audio file. Record first!")
 
